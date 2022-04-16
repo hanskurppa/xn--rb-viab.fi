@@ -1,0 +1,18 @@
+/* TEAM */
+    Webmaster: Hans Kurppa
+    Contact: hans.kurppa@outlook.com
+    From: Turku, Finland
+    TechBBS: members/hans_k.4070/
+
+/* THANKS */
+    Name: Räpellys & Testaus
+
+/* SITE */
+    Language: Finnish, English
+    Doctype: HTML5
+    IDE: VSCode
+    OS: Ubuntu
+    Scripting: PowerShell
+    Server: Caddy
+    Host: Hetzner
+    GitHub: https://github.com/hanskurppa/xn--rb-viab.fi

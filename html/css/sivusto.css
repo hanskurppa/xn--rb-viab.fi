@@ -1,0 +1,165 @@
+html {
+    font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+
+body {
+    margin: 0 auto;
+    max-width: 1080px;
+    color: #444;
+    background-color: #f0f0f0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover,
+a:active {
+    text-decoration: underline;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul {
+    overflow: hidden;
+}
+
+header nav li {
+    float: left;
+}
+
+header nav a {
+    display: block;
+    padding: 8px;
+}
+
+header nav a:hover,
+header nav a:active {
+    background-color: #eee;
+}
+
+header h1 {
+    letter-spacing: 2px;
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+}
+
+header p {
+    padding-top: 0;
+    margin-top: 0;
+    font-size: max(1rem, 1.4vw);
+}
+
+article {
+    margin: 2rem 0;
+    padding: .3rem;
+}
+
+article > h2 {
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: .3em;
+    padding-right: 0;
+    margin: 0;
+    font-weight: normal;
+    font-size: max(1rem, 1.4vw);
+}
+
+article > ul {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: .3rem;
+    padding-right: .3rem;
+    background-color: #fefefe;
+    border-width: 1px;
+    border-style: solid;
+    border-top-color: #cecece;
+    border-bottom-color: #cecece;
+    border-left-color: #cecece;
+    border-right-color: #cecece;
+    border-left: 5px solid #1EA0F3;
+}
+
+article li {
+    font-size: max(0.8rem, 1.2vw);
+}
+
+aside {
+    display: block;
+    border-left: 5px solid #1EA0F3;
+}
+
+header aside {
+    border-left: none;
+}
+
+aside > ul {
+    overflow: hidden;
+    padding: 0;
+    border: 0;
+}
+
+aside li {
+    float: left;
+    margin: 0 2px;
+    font-size: 0;
+}
+
+aside a {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 32px;
+    height: 32px;
+}
+
+li.amazon {
+    background-image: url("/img/amazon.png");
+}
+
+li.cmore {
+    background-image: url("/img/cmore.png");
+}
+
+li.discovery {
+    background-image: url("/img/discovery.png");
+}
+
+li.disney {
+    background-image: url("/img/disney.png");
+}
+
+li.hbo {
+    background-image: url("/img/hbo.png");
+}
+
+li.justwatch {
+    background-image: url("/img/justwatch.png");
+}
+
+li.netflix {
+    background-image: url("/img/netflix.png");
+}
+
+li.ruutu {
+    background-image: url("/img/ruutu.png");
+}
+
+li.viaplay {
+    background-image: url("/img/viaplay.png");
+}
+
+li.vimeo {
+    background-image: url("/img/vimeo.png");
+}
+
+li.yle {
+    background-image: url("/img/yle.png");
+}
+
+li.youtube {
+    background-image: url("/img/youtube.png");
+}

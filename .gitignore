@@ -1,0 +1,29 @@
+############
+# Binäärit #
+############
+*.gif
+*.ico
+*.jpeg
+*.jpg
+*.mp4
+*.png
+*.webm
+*.zip
+
+########################################
+# Generaation väliaikaiset räpellykset #
+########################################
+html/tmp
+html/tmp/**
+
+######################
+# Luodaan skriptillä #
+######################
+*gifs
+*gifs/**
+
+############
+# symlinks #
+############
+_symlinks
+_symlinks/**
