@@ -19,8 +19,8 @@ html/tmp/**
 ######################
 # Luodaan skriptillä #
 ######################
-*gifs
-*gifs/**
+*gif*
+*gif*/**
 
 ############
 # symlinks #

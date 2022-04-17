@@ -1,9 +1,9 @@
 {
 	email hans.kurppa@outlook.com
 	servers {
-		protocol {
-				experimental_http3
-		}
+			protocol {
+					experimental_http3
+			}
 	}
 }
 
@@ -12,11 +12,11 @@
 #############################
 (snippet) {
 	tls {
-		protocols tls1.3
-		alpn h2
+			protocols tls1.3
+			alpn h2
 	}
 	handle_errors {
-		respond "{http.error.status_code} {http.error.status_text}"
+			respond "{http.error.status_code} {http.error.status_text}"
 	}
 	header Strict-Transport-Security "max-age=31536000; includeSubDomains"
 	header X-Content-Type-Options "nosniff"
@@ -73,6 +73,20 @@ xn--rb-viab.fi {
 	redir /tmp/ https://xn--rb-viab.fi/amy
 	redir /tmp/k18 https://xn--rb-viab.fi/amy
 	redir /tmp/k18/ https://xn--rb-viab.fi/amy
+	import snippet
+}
+
+# gifut.fi
+gifut.fi {
+	root * /var/www/gifut
+	import gifgallerysnippet
+	import snippet
+}
+
+# k18gifut.fi
+k18gifut.fi {
+	root * /var/www/k18gifut
+	import gifgallerysnippet
 	import snippet
 }
 
@@ -218,6 +232,14 @@ raebae.fi {
 
 www.xn--jokurandomkissakesllptkttmssriihimell-dedcfbcgd30fc.fi {
 	redir https://xn--jokurandomkissakesllptkttmssriihimell-dedcfbcgd30fc.fi{uri} permanent
+}
+
+www.gifut.fi {
+	redir https://gifut.fi{uri} permanent
+}
+
+www.k18gifut.fi {
+	redir https://k18gifut.fi{uri} permanent
 }
 
 www.amygifs.com {

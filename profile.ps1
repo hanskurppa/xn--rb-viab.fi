@@ -214,3 +214,152 @@ function gif {
 
     $res | Set-Content -Path $IndexFile
 }
+
+function gifut {
+    [CmdletBinding()]
+    param (
+        [Switch]$k18,
+        [Switch]$Force
+    )
+
+    if ($k18) {
+        $IndexFile = "/var/www/k18gifut/index.html"
+        $EmptyZipFile = "/var/www/empty.zip"
+        $ZipFile = "/var/www/k18gifut/k18gifut.zip"
+        $GifDir = "/var/www/k18gifut/gif/"
+        $JpgDir ="/var/www/k18gifut/jpg/"
+        $WebmDir = "/var/www/k18gifut/webm/"
+        $Mp4Dir = "/var/www/k18gifut/mp4/"
+        $gifs = Get-ChildItem -Path $GifDir -File -Filter "*.gif"
+    } else {
+        $IndexFile = "/var/www/gifut/index.html"
+        $EmptyZipFile = "/var/www/empty.zip"
+        $ZipFile = "/var/www/gifut/gifut.zip"
+        $GifDir = "/var/www/gifut/gif/"
+        $JpgDir ="/var/www/gifut/jpg/"
+        $WebmDir = "/var/www/gifut/webm/"
+        $Mp4Dir = "/var/www/gifut/mp4/"
+        $gifs = Get-ChildItem -Path $GifDir -File -Filter "*.gif"
+    }
+
+    if ($Force) {
+        $JpgDir, $WebmDir, $Mp4Dir | ForEach-Object {
+            New-Item -ItemType Directory -Force -Path $_ -ea 0 | Out-Null
+            Remove-Item -Force -Recurse -Path $_/* -ea 0 | Out-Null
+        }
+
+        if (-not (Test-Path $EmptyZipFile)) {
+            Write-Output UEsFBgAAAAAAAAAAAAAAAAAAAAAAAA== | base64 -d > $EmptyZipFile
+        }
+
+        Copy-Item $EmptyZipFile $ZipFile -ea 0
+    }
+
+    zip -ujqr $ZipFile $GifDir
+
+    $ZipSizeInMB = [math]::Round((Get-Item $ZipFile).Size/1MB,0)
+
+    $res = @"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>$(if ($k18) { "k18" })gifut</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            color: #444;
+            background-color: #f0f0f0;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            display: inline-block;
+            padding: 0.5em;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: center;
+            align-items: center;
+        }
+
+        video, img {
+            max-width: 29vw;
+            max-height: 70vh;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+<header>
+<nav>
+    <ul>
+        <li>$(if ($k18) { "(<a href=""https://gifut.fi/"">muut gifut</a>), " }) $($gifs.count) $(if ($k18) { "k18" })gifua, $ZipSizeInMB MB <a href="/$(if ($k18) { "k18" })gifut.zip" title="Kaikki $(if ($k18) { "k18" })gifut zipattuna">$(if ($k18) { "k18" })gifut.zip</a></li>
+        <li><a href="/gif/">gif</a></li>
+        <li><a href="/webm/">webm</a></li>
+        <li><a href="/mp4/">mp4</a></li>
+    </ul>
+</nav>
+</header>
+<main>
+"@
+
+    $res += $gifs | ForEach-Object {
+        $gif = $_.FullName
+        $jpg = $gif.replace("/gif/","/jpg/").replace(".gif",".jpg")
+        $webm = $gif.replace("/gif/","/webm/").replace(".gif",".webm")
+        $mp4 = $gif.replace("/gif/","/mp4/").replace(".gif",".mp4")
+        $width, $height = (ffprobe -v quiet -select_streams v -show_entries stream=width,height -of csv=p=0:s=x $gif).split("x")
+
+        if ($Force -or -not (Test-Path $jpg)) {
+            ffmpeg -hide_banner -loglevel quiet -y -i $gif -frames:v 1 -q:v 30 -f image2 $jpg
+        }
+
+        if ($Force -or -not (Test-Path $webm)) {
+            ffmpeg -hide_banner -loglevel quiet -y -i $gif -c vp9 -b:v 0 -crf 20 $webm
+        }
+
+        if ($Force -or -not (Test-Path $mp4)) {
+            ffmpeg -hide_banner -loglevel quiet -y -i $gif -movflags +faststart -pix_fmt yuv420p -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" $mp4
+        }
+        
+        $n = $_.Name
+        $alt = $n.Replace("_"," ").Replace(".gif","")
+
+        @"
+
+<article>
+<a href="/gif/$n">
+<video autoplay loop muted playsinline poster="/jpg/$($n.Replace(".gif",".jpg"))" width="$width">
+    <source src="/webm/$($n.Replace(".gif",".webm"))" type="video/webm">
+    <source src="/mp4/$($n.Replace(".gif",".mp4"))" type="video/mp4">
+    <img src="/jpg/$($n.Replace(".gif",".jpg"))" alt="$alt" width="$width">
+</video>
+</a>
+</article>
+"@
+    }
+
+    $res += @"
+
+</main>
+</body>
+</html>
+"@
+
+    $res | Set-Content -Path $IndexFile
+}
