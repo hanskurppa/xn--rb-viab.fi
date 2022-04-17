@@ -133,6 +133,7 @@ function gif {
         <li><a href="/gif/">gif</a></li>
         <li><a href="/webm/">webm</a></li>
         <li><a href="/mp4/">mp4</a></li>
+        <li><a href="/humans.txt">?</a></li>
     </ul>
 </nav>
 </header>
@@ -308,10 +309,11 @@ function gifut {
 <header>
 <nav>
     <ul>
-        <li>$(if ($k18) { "(<a href=""https://gifut.fi/"">muut gifut</a>), " }) $($gifs.count) $(if ($k18) { "k18" })gifua, $ZipSizeInMB MB <a href="/$(if ($k18) { "k18" })gifut.zip" title="Kaikki $(if ($k18) { "k18" })gifut zipattuna">$(if ($k18) { "k18" })gifut.zip</a></li>
+        <li>$(if ($k18) { "(<a href=""https://gifut.fi/"">muut gifut</a>) " }) $($gifs.count) gifua, $ZipSizeInMB MB <a href="/$(if ($k18) { "k18" })gifut.zip" title="Kaikki gifut zipattuna">$(if ($k18) { "k18" })gifut.zip</a></li>
         <li><a href="/gif/">gif</a></li>
         <li><a href="/webm/">webm</a></li>
         <li><a href="/mp4/">mp4</a></li>
+        <li><a href="/humans.txt">?</a></li>
     </ul>
 </nav>
 </header>
