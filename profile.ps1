@@ -55,8 +55,6 @@ function gif {
     }
 
     $IndexFile = "/var/www/$($ShortName)gifs/index.html"
-    $EmptyZipFile = "/var/www/empty.zip"
-    $ZipFile = "/var/www/$($ShortName)gifs/$($ShortName)gifs.zip"
     $GifDir = "/var/www/$($ShortName)gifs/gif/"
     $JpgDir ="/var/www/$($ShortName)gifs/jpg/"
     $WebmDir = "/var/www/$($ShortName)gifs/webm/"
@@ -68,17 +66,7 @@ function gif {
             New-Item -ItemType Directory -Force -Path $_ -ea 0 | Out-Null
             Remove-Item -Force -Recurse -Path $_/* -ea 0 | Out-Null
         }
-
-        if (-not (Test-Path $EmptyZipFile)) {
-            Write-Output UEsFBgAAAAAAAAAAAAAAAAAAAAAAAA== | base64 -d > $EmptyZipFile
-        }
-
-        Copy-Item $EmptyZipFile $ZipFile -ea 0
     }
-
-    zip -ujqr $ZipFile $GifDir
-
-    $ZipSizeInMB = [math]::Round((Get-Item $ZipFile).Size/1MB,0)
 
     $res = @"
 <!DOCTYPE html>
@@ -129,7 +117,7 @@ function gif {
 <header>
 <nav>
     <ul>
-        <li>$($gifs.count) gifs, $ZipSizeInMB MB <a href="/$($ShortName)gifs.zip" title="All $FullName gifs zipped">$($ShortName)gifs.zip</a></li>
+        <li>$($gifs.count) gifs</li>
         <li><a href="/gif/">gif</a></li>
         <li><a href="/webm/">webm</a></li>
         <li><a href="/mp4/">mp4</a></li>
@@ -225,8 +213,6 @@ function gifut {
 
     if ($k18) {
         $IndexFile = "/var/www/k18gifut/index.html"
-        $EmptyZipFile = "/var/www/empty.zip"
-        $ZipFile = "/var/www/k18gifut/k18gifut.zip"
         $GifDir = "/var/www/k18gifut/gif/"
         $JpgDir ="/var/www/k18gifut/jpg/"
         $WebmDir = "/var/www/k18gifut/webm/"
@@ -234,8 +220,6 @@ function gifut {
         $gifs = Get-ChildItem -Path $GifDir -File -Filter "*.gif"
     } else {
         $IndexFile = "/var/www/gifut/index.html"
-        $EmptyZipFile = "/var/www/empty.zip"
-        $ZipFile = "/var/www/gifut/gifut.zip"
         $GifDir = "/var/www/gifut/gif/"
         $JpgDir ="/var/www/gifut/jpg/"
         $WebmDir = "/var/www/gifut/webm/"
@@ -248,17 +232,7 @@ function gifut {
             New-Item -ItemType Directory -Force -Path $_ -ea 0 | Out-Null
             Remove-Item -Force -Recurse -Path $_/* -ea 0 | Out-Null
         }
-
-        if (-not (Test-Path $EmptyZipFile)) {
-            Write-Output UEsFBgAAAAAAAAAAAAAAAAAAAAAAAA== | base64 -d > $EmptyZipFile
-        }
-
-        Copy-Item $EmptyZipFile $ZipFile -ea 0
     }
-
-    zip -ujqr $ZipFile $GifDir
-
-    $ZipSizeInMB = [math]::Round((Get-Item $ZipFile).Size/1MB,0)
 
     $res = @"
 <!DOCTYPE html>
@@ -309,7 +283,7 @@ function gifut {
 <header>
 <nav>
     <ul>
-        <li>$(if ($k18) { "(<a href=""https://gifut.fi/"">muut gifut</a>) " }) $($gifs.count) gifua, $ZipSizeInMB MB <a href="/$(if ($k18) { "k18" })gifut.zip" title="Kaikki gifut zipattuna">$(if ($k18) { "k18" })gifut.zip</a></li>
+        <li>$(if ($k18) { "(<a href=""https://gifut.fi/"">muut gifut</a>) " }) $($gifs.count) gifua</li>
         <li><a href="/gif/">gif</a></li>
         <li><a href="/webm/">webm</a></li>
         <li><a href="/mp4/">mp4</a></li>
