@@ -1,9 +1,10 @@
 {
+	admin off
 	email hans.kurppa@outlook.com
 	servers {
-			protocol {
-					experimental_http3
-			}
+		protocol {
+			experimental_http3
+		}
 	}
 }
 
@@ -12,11 +13,11 @@
 #############################
 (snippet) {
 	tls {
-			protocols tls1.3
-			alpn h2
+		protocols tls1.3
+		alpn h2
 	}
 	handle_errors {
-			respond "{http.error.status_code} {http.error.status_text}"
+		respond "{http.error.status_code} {http.error.status_text}"
 	}
 	header Strict-Transport-Security "max-age=31536000; includeSubDomains"
 	header X-Content-Type-Options "nosniff"
