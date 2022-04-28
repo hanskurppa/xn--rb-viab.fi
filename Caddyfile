@@ -11,10 +11,11 @@
 #############################
 # Kaikkien sivujen käytössä #
 #############################
-(snippet) {
+(cloudflare) {
 	tls {
 		protocols tls1.3
 		alpn h2
+		dns cloudflare {env.CF_API_TOKEN}
 	}
 	handle_errors {
 		respond "{http.error.status_code} {http.error.status_text}"
@@ -40,7 +41,7 @@
 ##################################
 # Vain GIF-gallerioiden käytössä #
 ##################################
-(gifgallerysnippet) {
+(gifgallery) {
 	redir /gif /gif/
 	redir /jpg /jpg/
 	redir /mp4 /mp4/
@@ -57,7 +58,19 @@
 # This is a test domain
 testdomain.vip {
 	root * /var/www/testdomain
-	import snippet
+	tls {
+		protocols tls1.3
+		alpn h2
+	}
+	handle_errors {
+		respond "{http.error.status_code} {http.error.status_text}"
+	}
+	header Strict-Transport-Security "max-age=31536000; includeSubDomains"
+	header X-Content-Type-Options "nosniff"
+	header *.html Cache-Control "no-cache"
+	header *.ico Cache-Control "max-age=31536000, immutable"
+	encode gzip zstd
+	file_server
 }
 
 # räbä.fi
@@ -74,126 +87,126 @@ xn--rb-viab.fi {
 	redir /tmp/ https://xn--rb-viab.fi/amy
 	redir /tmp/k18 https://xn--rb-viab.fi/amy
 	redir /tmp/k18/ https://xn--rb-viab.fi/amy
-	import snippet
+	import cloudflare
 }
 
 # gifut.fi
 gifut.fi {
 	root * /var/www/gifut
-	import gifgallerysnippet
-	import snippet
+	import gifgallery
+	import cloudflare
 }
 
 # k18gifut.fi
 k18gifut.fi {
 	root * /var/www/k18gifut
-	import gifgallerysnippet
-	import snippet
+	import gifgallery
+	import cloudflare
 }
 
 # Alexandra Daddario
 alexgifs.com {
 	root * /var/www/alexgifs
-	import gifgallerysnippet
-	import snippet
+	import gifgallery
+	import cloudflare
 }
 
 # Alice Levine
 alicegifs.com {
 	root * /var/www/alicegifs
-	import gifgallerysnippet
-	import snippet
+	import gifgallery
+	import cloudflare
 }
 
 # Alison Brie
 alisongifs.com {
 	root * /var/www/alisongifs
-	import gifgallerysnippet
-	import snippet
+	import gifgallery
+	import cloudflare
 }
 
 # Alizée
 alizeegifs.com {
 	root * /var/www/alizeegifs
-	import gifgallerysnippet
-	import snippet
+	import gifgallery
+	import cloudflare
 }
 
 # Amy Adams
 amygifs.com {
 	root * /var/www/amygifs
-	import gifgallerysnippet
-	import snippet
+	import gifgallery
+	import cloudflare
 }
 
 # BEHM
 behmgifs.com {
 	root * /var/www/behmgifs
-	import gifgallerysnippet
-	import snippet
+	import gifgallery
+	import cloudflare
 }
 
 # Blake Lively
 blakegifs.com {
 	root * /var/www/blakegifs
-	import gifgallerysnippet
-	import snippet
+	import gifgallery
+	import cloudflare
 }
 
 # Christina Hendricks
 christinagifs.com {
 	root * /var/www/christinagifs
-	import gifgallerysnippet
-	import snippet
+	import gifgallery
+	import cloudflare
 }
 
 # Elisabeth Shue
 elisabethgifs.com {
 	root * /var/www/elisabethgifs
-	import gifgallerysnippet
-	import snippet
+	import gifgallery
+	import cloudflare
 }
 
 # Elizabeth Hurley
 elizabethgifs.com {
 	root * /var/www/elizabethgifs
-	import gifgallerysnippet
-	import snippet
+	import gifgallery
+	import cloudflare
 }
 
 # January Jones
 januarygifs.com {
 	root * /var/www/januarygifs
-	import gifgallerysnippet
-	import snippet
+	import gifgallery
+	import cloudflare
 }
 
 # Jessica Chastain
 jessicagifs.com {
 	root * /var/www/jessicagifs
-	import gifgallerysnippet
-	import snippet
+	import gifgallery
+	import cloudflare
 }
 
 # Julie Bowen
 juliegifs.com {
 	root * /var/www/juliegifs
-	import gifgallerysnippet
-	import snippet
+	import gifgallery
+	import cloudflare
 }
 
 # Katheryn Winnick
 katheryngifs.com {
 	root * /var/www/katheryngifs
-	import gifgallerysnippet
-	import snippet
+	import gifgallery
+	import cloudflare
 }
 
 # Kiernan Shipka
 kiernangifs.com {
 	root * /var/www/kiernangifs
-	import gifgallerysnippet
-	import snippet
+	import gifgallery
+	import cloudflare
 }
 
 # jokurandomkissakesälläpötköttämässäriihimäellä.fi
@@ -201,7 +214,7 @@ xn--jokurandomkissakesllptkttmssriihimell-dedcfbcgd30fc.fi {
 	root * /var/www/jokurandom
 	try_files {path} /sghdsgdfh.jpg
 	header / Content-Disposition "filename=sghdsgdfh.jpg"
-	import snippet
+	import cloudflare
 }
 
 #############################
