@@ -3,6 +3,7 @@
     Contact: hans.kurppa@outlook.com
     From: Turku, Finland
     TechBBS: members/hans_k.4070/
+    GitHub: hanskurppa
 
 /* THANKS */
     Name: Räpellys & Testaus
@@ -12,7 +13,29 @@
     Doctype: HTML5
     IDE: VSCode
     OS: Ubuntu
-    Scripting: PowerShell
+    Scripting: PowerShell, JavaScript
     Server: Caddy
     Host: Hetzner
-    GitHub: https://github.com/hanskurppa/xn--rb-viab.fi
+    CDN: Cloudflare
+
+/* DOMAINS */
+    alexgifs.com
+    alicegifs.com
+    alisongifs.com
+    alizeegifs.com
+    amygifs.com
+    behmgifs.com
+    blakegifs.com
+    christinagifs.com
+    elisabethgifs.com (some NSFW content)
+    elizabethgifs.com
+    gifut.fi
+    januarygifs.com
+    jessicagifs.com
+    juliegifs.com
+    k18gifut.fi (NSFW content)
+    katheryngifs.com
+    kiernangifs.com
+    testdomain.vip (no Cloudflare)
+    jokurandomkissakesälläpötköttämässäriihimäellä.fi (IDN xn--jokurandomkissakesllptkttmssriihimell-dedcfbcgd30fc.fi)
+    räbä.fi (IDN xn--rb-viab.fi) (also raba.fi raebae.fi)
