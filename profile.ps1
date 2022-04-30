@@ -72,7 +72,7 @@ function gif {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>$FullName gifs</title>
     <link rel="stylesheet" href="gallery.css">
@@ -242,8 +242,11 @@ function gifut {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    $(if ($k18) {
+        "<meta name=""rating"" content=""adult"">"
+    })
     <title>$(if ($k18) { "k18" })gifut</title>
     <link rel="stylesheet" href="gallery.css">
     <script src="lazyload.min.js"></script>
