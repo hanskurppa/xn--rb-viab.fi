@@ -122,6 +122,7 @@ function gif {
         <li><a href="/webm/">webm</a></li>
         <li><a href="/mp4/">mp4</a></li>
         <li><a href="/humans.txt">?</a></li>
+        <li><input style="display:none" type="text" placeholder="filter" id="filter" onkeyup='filter()'></li>
     </ul>
 </nav>
 </header>
@@ -197,6 +198,39 @@ function gif {
     </ul>
 </nav>
 </footer>
+<script>
+    var filterEl = document.getElementById('filter');
+    filterEl.style.display = '';
+    filterEl.focus({ preventScroll: true });
+
+    function initFilter() {
+        if (!filterEl.value) {
+            var filterParam = new URL(window.location.href).searchParams.get('filter');
+            if (filterParam) {
+                filterEl.value = filterParam;
+            }
+        }
+        filter();
+    }
+
+    function filter() {
+        var q = filterEl.value.trim().toLowerCase();
+        var elems = document.querySelectorAll('article');
+        elems.forEach(function(el) {
+            if (!q) {
+                el.style.display = '';
+                return;
+            }
+            var nameEl = el.querySelector('video > img');
+            var nameVal = nameEl.getAttribute('alt').trim().toLowerCase();
+            if (nameVal.indexOf(q) !== -1) {
+                el.style.display = '';
+            } else {
+                el.style.display = 'none';
+            }
+        });
+    }
+</script>
 </body>
 </html>
 "@
@@ -288,6 +322,7 @@ function gifut {
         <li><a href="/webm/">webm</a></li>
         <li><a href="/mp4/">mp4</a></li>
         <li><a href="/humans.txt">?</a></li>
+        <li><input style="display:none" type="text" placeholder="filter" id="filter" onkeyup='filter()'></li>
     </ul>
 </nav>
 </header>
@@ -333,6 +368,39 @@ function gifut {
     $res += @"
 
 </main>
+<script>
+    var filterEl = document.getElementById('filter');
+    filterEl.style.display = '';
+    filterEl.focus({ preventScroll: true });
+
+    function initFilter() {
+        if (!filterEl.value) {
+            var filterParam = new URL(window.location.href).searchParams.get('filter');
+            if (filterParam) {
+                filterEl.value = filterParam;
+            }
+        }
+        filter();
+    }
+
+    function filter() {
+        var q = filterEl.value.trim().toLowerCase();
+        var elems = document.querySelectorAll('article');
+        elems.forEach(function(el) {
+            if (!q) {
+                el.style.display = '';
+                return;
+            }
+            var nameEl = el.querySelector('video > img');
+            var nameVal = nameEl.getAttribute('alt').trim().toLowerCase();
+            if (nameVal.indexOf(q) !== -1) {
+                el.style.display = '';
+            } else {
+                el.style.display = 'none';
+            }
+        });
+    }
+</script>
 </body>
 </html>
 "@
