@@ -75,45 +75,10 @@ function gif {
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>$FullName gifs</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            color: #444;
-            background-color: #f0f0f0;
-        }
-
-        ul {
-            list-style-type: none;
-        }
-
-        li {
-            display: inline-block;
-            padding: 0.5em;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        main {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            justify-items: center;
-            align-items: center;
-        }
-
-        video, img {
-            max-width: 29vw;
-            max-height: 70vh;
-            object-fit: contain;
-        }
-    </style>
+    <link rel="stylesheet" href="gallery.css">
+    <script src="lazyload.min.js"></script>
 </head>
-<body>
+<body onload="initFilter()">
 <header>
 <nav>
     <ul>
@@ -164,11 +129,12 @@ function gif {
 
 <article>
 <a href="/gif/$n">
-<video autoplay loop muted playsinline poster="/jpg/$($n.Replace(".gif",".jpg"))" width="$width">
-    <source src="/webm/$($n.Replace(".gif",".webm"))" type="video/webm">
-    <source src="/mp4/$($n.Replace(".gif",".mp4"))" type="video/mp4">
+<video class="lazy" autoplay loop muted playsinline poster="/jpg/$($n.Replace(".gif",".jpg"))" width="$width">
+    <source data-src="/webm/$($n.Replace(".gif",".webm"))" type="video/webm">
+    <source data-src="/mp4/$($n.Replace(".gif",".mp4"))" type="video/mp4">
     <img src="/jpg/$($n.Replace(".gif",".jpg"))" alt="$alt" width="$width">
 </video>
+<p>$alt</p>
 </a>
 </article>
 "@
@@ -221,8 +187,8 @@ function gif {
                 el.style.display = '';
                 return;
             }
-            var nameEl = el.querySelector('video > img');
-            var nameVal = nameEl.getAttribute('alt').trim().toLowerCase();
+            var nameEl = el.querySelector('p');
+            var nameVal = nameEl.textContent.trim().toLowerCase();
             if (nameVal.indexOf(q) !== -1) {
                 el.style.display = '';
             } else {
@@ -230,6 +196,10 @@ function gif {
             }
         });
     }
+
+    var lazyLoadInstance = new LazyLoad({
+        // Your custom settings go here
+    });
 </script>
 </body>
 </html>
@@ -275,45 +245,10 @@ function gifut {
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>$(if ($k18) { "k18" })gifut</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            color: #444;
-            background-color: #f0f0f0;
-        }
-
-        ul {
-            list-style-type: none;
-        }
-
-        li {
-            display: inline-block;
-            padding: 0.5em;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        main {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            justify-items: center;
-            align-items: center;
-        }
-
-        video, img {
-            max-width: 29vw;
-            max-height: 70vh;
-            object-fit: contain;
-        }
-    </style>
+    <link rel="stylesheet" href="gallery.css">
+    <script src="lazyload.min.js"></script>
 </head>
-<body>
+<body onload="initFilter()">
 <header>
 <nav>
     <ul>
@@ -355,11 +290,12 @@ function gifut {
 
 <article>
 <a href="/gif/$n">
-<video autoplay loop muted playsinline poster="/jpg/$($n.Replace(".gif",".jpg"))" width="$width">
-    <source src="/webm/$($n.Replace(".gif",".webm"))" type="video/webm">
-    <source src="/mp4/$($n.Replace(".gif",".mp4"))" type="video/mp4">
+<video class="lazy" autoplay loop muted playsinline poster="/jpg/$($n.Replace(".gif",".jpg"))" width="$width">
+    <source data-src="/webm/$($n.Replace(".gif",".webm"))" type="video/webm">
+    <source data-src="/mp4/$($n.Replace(".gif",".mp4"))" type="video/mp4">
     <img src="/jpg/$($n.Replace(".gif",".jpg"))" alt="$alt" width="$width">
 </video>
+<p>$alt</p>
 </a>
 </article>
 "@
@@ -391,8 +327,8 @@ function gifut {
                 el.style.display = '';
                 return;
             }
-            var nameEl = el.querySelector('video > img');
-            var nameVal = nameEl.getAttribute('alt').trim().toLowerCase();
+            var nameEl = el.querySelector('p');
+            var nameVal = nameEl.textContent.trim().toLowerCase();
             if (nameVal.indexOf(q) !== -1) {
                 el.style.display = '';
             } else {
@@ -400,6 +336,10 @@ function gifut {
             }
         });
     }
+
+    var lazyLoadInstance = new LazyLoad({
+        // Your custom settings go here
+    });
 </script>
 </body>
 </html>
