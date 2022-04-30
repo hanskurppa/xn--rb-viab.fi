@@ -21,6 +21,7 @@ html/tmp/**
 ######################
 *gif*
 *gif*/**
+js/lazyload.min.js
 
 ############
 # symlinks #
