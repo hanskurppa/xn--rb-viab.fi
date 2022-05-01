@@ -8,9 +8,9 @@
 	}
 }
 
-#############################
-# Kaikkien sivujen käytössä #
-#############################
+###############################
+# Cloudflare sivujen käytössä #
+###############################
 (cloudflare) {
 	tls {
 		protocols tls1.3
@@ -55,7 +55,7 @@
 ####################
 # Aktiiviset sivut #
 ####################
-# This is a test domain
+# Cloudflare ei ole käytössä
 testdomain.vip {
 	root * /var/www/testdomain
 	tls {
