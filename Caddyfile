@@ -8,15 +8,10 @@
 	}
 }
 
-###############################
-# Cloudflare sivujen käytössä #
-###############################
-(cloudflare) {
-	tls {
-		protocols tls1.3
-		alpn h2
-		dns cloudflare {env.CF_API_TOKEN}
-	}
+#############################
+# Kaikkien sivujen käytössä #
+#############################
+(server) {
 	handle_errors {
 		respond "{http.error.status_code} {http.error.status_text}"
 	}
@@ -25,6 +20,7 @@
 	header *.css Cache-Control "no-cache"
 	header *.html Cache-Control "no-cache"
 	header *.js Cache-Control "no-cache"
+	header *.json Cache-Control "no-cache"
 	header *.txt Cache-Control "no-cache"
 	header *.zip Cache-Control "no-cache"
 	header *.gif Cache-Control "max-age=31536000, immutable"
@@ -34,8 +30,32 @@
 	header *.mp4 Cache-Control "max-age=31536000, immutable"
 	header *.png Cache-Control "max-age=31536000, immutable"
 	header *.webm Cache-Control "max-age=31536000, immutable"
+	header *.css Content-Type "text/css"
+	header *.html Content-Type "text/html"
+	header *.js Content-Type "application/javascript"
+	header *.json Content-Type "application/json"
+	header *.txt Content-Type "text/plain"
+	header *.zip Content-Type "application/zip"
+	header *.gif Content-Type "image/gif"
+	header *.ico Content-Type "image/vnd.microsoft.icon"
+	header *.jpeg Content-Type "image/jpeg"
+	header *.jpg Content-Type "image/jpeg"
+	header *.mp4 Content-Type "video/mp4"
+	header *.png Content-Type "image/png"
+	header *.webm Content-Type "video/webm"
 	encode gzip zstd
 	file_server
+}
+
+###############################
+# Cloudflare sivujen käytössä #
+###############################
+(cloudflare) {
+	tls {
+		protocols tls1.3
+		alpn h2
+		dns cloudflare {env.CF_API_TOKEN}
+	}
 }
 
 ##################################
@@ -62,15 +82,7 @@ testdomain.vip {
 		protocols tls1.3
 		alpn h2
 	}
-	handle_errors {
-		respond "{http.error.status_code} {http.error.status_text}"
-	}
-	header Strict-Transport-Security "max-age=31536000; includeSubDomains"
-	header X-Content-Type-Options "nosniff"
-	header *.html Cache-Control "no-cache"
-	header *.ico Cache-Control "max-age=31536000, immutable"
-	encode gzip zstd
-	file_server
+	import server
 }
 
 # räbä.fi
@@ -88,125 +100,143 @@ xn--rb-viab.fi {
 	redir /tmp/k18 https://xn--rb-viab.fi/amy
 	redir /tmp/k18/ https://xn--rb-viab.fi/amy
 	import cloudflare
+	import server
 }
 
 # gifut.fi
 gifut.fi {
 	root * /var/www/gifut
-	import gifgallery
 	import cloudflare
+	import server
+	import gifgallery
 }
 
 # k18gifut.fi
 k18gifut.fi {
 	root * /var/www/k18gifut
-	import gifgallery
 	import cloudflare
+	import server
+	import gifgallery
 }
 
 # Alexandra Daddario
 alexgifs.com {
 	root * /var/www/alexgifs
-	import gifgallery
 	import cloudflare
+	import server
+	import gifgallery
 }
 
 # Alice Levine
 alicegifs.com {
 	root * /var/www/alicegifs
-	import gifgallery
 	import cloudflare
+	import server
+	import gifgallery
 }
 
 # Alison Brie
 alisongifs.com {
 	root * /var/www/alisongifs
-	import gifgallery
 	import cloudflare
+	import server
+	import gifgallery
 }
 
 # Alizée
 alizeegifs.com {
 	root * /var/www/alizeegifs
-	import gifgallery
 	import cloudflare
+	import server
+	import gifgallery
 }
 
 # Amy Adams
 amygifs.com {
 	root * /var/www/amygifs
-	import gifgallery
 	import cloudflare
+	import server
+	import gifgallery
 }
 
 # BEHM
 behmgifs.com {
 	root * /var/www/behmgifs
-	import gifgallery
 	import cloudflare
+	import server
+	import gifgallery
 }
 
 # Blake Lively
 blakegifs.com {
 	root * /var/www/blakegifs
-	import gifgallery
 	import cloudflare
+	import server
+	import gifgallery
 }
 
 # Christina Hendricks
 christinagifs.com {
 	root * /var/www/christinagifs
-	import gifgallery
 	import cloudflare
+	import server
+	import gifgallery
 }
 
 # Elisabeth Shue
 elisabethgifs.com {
 	root * /var/www/elisabethgifs
-	import gifgallery
 	import cloudflare
+	import server
+	import gifgallery
 }
 
 # Elizabeth Hurley
 elizabethgifs.com {
 	root * /var/www/elizabethgifs
-	import gifgallery
 	import cloudflare
+	import server
+	import gifgallery
 }
 
 # January Jones
 januarygifs.com {
 	root * /var/www/januarygifs
-	import gifgallery
 	import cloudflare
+	import server
+	import gifgallery
 }
 
 # Jessica Chastain
 jessicagifs.com {
 	root * /var/www/jessicagifs
-	import gifgallery
 	import cloudflare
+	import server
+	import gifgallery
 }
 
 # Julie Bowen
 juliegifs.com {
 	root * /var/www/juliegifs
-	import gifgallery
 	import cloudflare
+	import server
+	import gifgallery
 }
 
 # Katheryn Winnick
 katheryngifs.com {
 	root * /var/www/katheryngifs
-	import gifgallery
 	import cloudflare
+	import server
+	import gifgallery
 }
 
 # Kiernan Shipka
 kiernangifs.com {
 	root * /var/www/kiernangifs
-	import gifgallery
 	import cloudflare
+	import server
+	import gifgallery
 }
 
 # jokurandomkissakesälläpötköttämässäriihimäellä.fi
@@ -215,6 +245,7 @@ xn--jokurandomkissakesllptkttmssriihimell-dedcfbcgd30fc.fi {
 	try_files {path} /sghdsgdfh.jpg
 	header / Content-Disposition "filename=sghdsgdfh.jpg"
 	import cloudflare
+	import server
 }
 
 #############################
