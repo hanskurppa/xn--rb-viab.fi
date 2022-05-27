@@ -4,8 +4,8 @@
 }
 
 body {
-    color: #444;
-    background-color: #f0f0f0;
+    color: rgb(168, 164, 180);
+    background-color: #393636b8;
 }
 
 ul {
@@ -22,14 +22,24 @@ a {
 }
 
 main {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    /*grid-template-columns: repeat(3, 1fr);*/
     justify-items: center;
-    align-items: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: min(100% - 1em);
+    margin-inline: auto;
 }
 
 video, img {
     max-width: 29vw;
-    max-height: 70vh;
+    max-height: 45vh;
     object-fit: contain;
+    height: auto;
+    width: 100%;
+    vertical-align: top;
+}
+
+p {
+    display: none
 }
