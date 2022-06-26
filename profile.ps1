@@ -87,6 +87,7 @@ function gif {
     $JpgDir     = "$SiteRoot/jpg/"
     $WebmDir    = "$SiteRoot/webm/"
     $Mp4Dir     = "$SiteRoot/mp4/"
+    $JsonDir     = "$SiteRoot/json/"
     $gifs       = Get-ChildItem -Path $GifDir -File -Filter "*.gif"
 
     if ($gifut) {
@@ -94,7 +95,7 @@ function gif {
         $PageDesc       = $PageHeaderText
         $PageVideoPath  = "$($Mp4Dir)/abofal_bonk_2.mp4"
     } elseif ($k18gifut) {
-        $PageHeaderText = "(<a href=""https://gifut.fi/"">muut gifut</a>) $($gifs.count) gifua"
+        $PageHeaderText = "$($gifs.count) gifua"
         $PageDesc       = "$($gifs.count) gifua"
         $PageVideoPath  = "$($Mp4Dir)/lola_hot_diggity_01.mp4"
     } else {
@@ -121,9 +122,9 @@ function gif {
         }
     }
 
-    if ($Force) {
-        $JpgDir, $WebmDir, $Mp4Dir | ForEach-Object {
-            New-Item -ItemType Directory -Force -Path $_ -ea 0 | Out-Null
+    $JpgDir, $WebmDir, $Mp4Dir, $JsonDir | ForEach-Object {
+        New-Item -ItemType Directory -Force -Path $_ -ea 0 | Out-Null
+        if ($Force) {
             Remove-Item -Force -Recurse -Path $_/* -ea 0 | Out-Null
         }
     }
@@ -162,21 +163,47 @@ function gif {
 </head>
 <body onload="initFilter()">
 <header>
-    <nav>
-    <ul>
-        <li>$PageHeaderText</li>
-        <li><a href="/gif/">gif</a></li>
-        <li><a href="/webm/">webm</a></li>
-        <li><a href="/mp4/">mp4</a></li>
-        <li><a href="/humans.txt">?</a></li>
-        <li><input style="display:none" type="text" placeholder="$(if ($PageLang -eq "fi") { "hae" } else { "filter" })" id="filter" onkeyup='filter()'></li>
-    </ul>
+    <nav role="navigation">
+        <div id="menuToggle">
+            <input type="checkbox">
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+                <a href="/gif/"><li>gif</li></a>
+                <a href="/webm/"><li>webm</li></a>
+                <a href="/mp4/"><li>mp4</li></a>
+                <a href="/humans.txt"><li>?</li></a>
+                $(if (-not $gifut -or -not $k18gifut) { 
+                    "<a href=""https://alexgifs.com/""><li>Alexandra Daddario gifs</li></a>`n"
+                    "                <a href=""https://alicegifs.com/""><li>Alice Levine gifs</li></a>`n"
+                    "                <a href=""https://alisongifs.com/""><li>Alison Brie gifs</li></a>`n"
+                    "                <a href=""https://alizeegifs.com/""><li>Alizée gifs</li></a>`n"
+                    "                <a href=""https://amygifs.com/""><li>Amy Adams gifs</li></a>`n"
+                    "                <a href=""https://behmgifs.com/""><li>BEHM gifs</li></a>`n"
+                    "                <a href=""https://blakegifs.com/""><li>Blake Lively gifs</li></a>`n"
+                    "                <a href=""https://christinagifs.com/""><li>Christina Hendricks gifs</li></a>`n"
+                    "                <a href=""https://elisabethgifs.com/""><li>Elisabeth Shue gifs</li></a>`n"
+                    "                <a href=""https://elizabethgifs.com/""><li>Elizabeth Hurley gifs</li></a>`n"
+                    "                <a href=""https://januarygifs.com/""><li>January Jones gifs</li></a>`n"
+                    "                <a href=""https://jessicagifs.com/""><li>Jessica Chastain gifs</li></a>`n"
+                    "                <a href=""https://juliegifs.com/""><li>Julie Bowen gifs</li></a>`n"
+                    "                <a href=""https://katheryngifs.com/""><li>Katheryn Winnick gifs</li></a>`n"
+                    "                <a href=""https://kiernangifs.com/""><li>Kiernan Shipka gifs</li></a>"
+                 })
+            </ul>
+        </div>
     </nav>
+    <input style="display:none" type="text" placeholder="$PageHeaderText" id="filter" onkeyup='filter()'>
 </header>
 <main>
 "@
 
+    $cnt = 1
     $res += $gifs | ForEach-Object {
+        Write-Progress -Activity "Giffing" -Status $_.FullName -PercentComplete ($cnt/$gifs.count*100)
+        $cnt++
+
         $gif = $_.FullName
         $jpg = $gif.replace("/gif/","/jpg/").replace(".gif",".jpg")
         $webm = $gif.replace("/gif/","/webm/").replace(".gif",".webm")
@@ -227,41 +254,12 @@ function gif {
 </main>
 "@
 
-if ($gifut -or $k18gifut) {
-    # tyhjä footer
-} else {
-    $res += @"
-
-<footer>
-<nav>
-    <ul>
-        <li><a href="https://alexgifs.com/">Alexandra Daddario gifs</a></li>
-        <li><a href="https://alicegifs.com/">Alice Levine gifs</a></li>
-        <li><a href="https://alisongifs.com/">Alison Brie gifs</a></li>
-        <li><a href="https://alizeegifs.com/">Alizée gifs</a></li>
-        <li><a href="https://amygifs.com/">Amy Adams gifs</a></li>
-        <li><a href="https://behmgifs.com/">BEHM gifs</a></li>
-        <li><a href="https://blakegifs.com/">Blake Lively gifs</a></li>
-        <li><a href="https://christinagifs.com/">Christina Hendricks gifs</a></li>
-        <li><a href="https://elisabethgifs.com/">Elisabeth Shue gifs</a></li>
-        <li><a href="https://elizabethgifs.com/">Elizabeth Hurley gifs</a></li>
-        <li><a href="https://januarygifs.com/">January Jones gifs</a></li>
-        <li><a href="https://jessicagifs.com/">Jessica Chastain gifs</a></li>
-        <li><a href="https://juliegifs.com/">Julie Bowen gifs</a></li>
-        <li><a href="https://katheryngifs.com/">Katheryn Winnick gifs</a></li>
-        <li><a href="https://kiernangifs.com/">Kiernan Shipka gifs</a></li>
-    </ul>
-</nav>
-</footer>
-"@
-}
-
     $res += @"
 
 <script>
     var filterEl = document.getElementById('filter');
     filterEl.style.display = '';
-    filterEl.focus({ preventScroll: true });
+    //filterEl.focus({ preventScroll: true });
 
     function initFilter() {
         if (!filterEl.value) {

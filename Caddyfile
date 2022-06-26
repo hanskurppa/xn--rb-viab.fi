@@ -88,17 +88,10 @@ testdomain.vip {
 # räbä.fi
 xn--rb-viab.fi {
 	root * /var/www/html
-	try_files {path}.html {path}
-	redir / https://xn--rb-viab.fi/amy
-	redir /amy/ https://xn--rb-viab.fi/amy
-	redir /css https://xn--rb-viab.fi/amy
-	redir /css/ https://xn--rb-viab.fi/amy
-	redir /img https://xn--rb-viab.fi/amy
-	redir /img/ https://xn--rb-viab.fi/amy
-	redir /tmp https://xn--rb-viab.fi/amy
-	redir /tmp/ https://xn--rb-viab.fi/amy
-	redir /tmp/k18 https://xn--rb-viab.fi/amy
-	redir /tmp/k18/ https://xn--rb-viab.fi/amy
+	redir /tmp https://xn--rb-viab.fi/
+	redir /tmp/ https://xn--rb-viab.fi/
+	redir /tmp/k18 https://xn--rb-viab.fi/
+	redir /tmp/k18/ https://xn--rb-viab.fi/
 	import cloudflare
 	import server
 }
