@@ -231,7 +231,7 @@ function gif {
                 Select-String -Pattern "^(\d{4})_(.+)?(\.gif)$" -AllMatches | `
                 Select-Object -ExpandProperty Matches | `
                 Select-Object -ExpandProperty Groups
-            $alt = "($($groups[1].Value)) $($groups[2].Value.Replace("_"," "))"
+            $alt = "$PageTitle ($($groups[1].Value)) $($groups[2].Value.Replace("_"," "))"
         }
 
         @"
