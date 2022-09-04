@@ -2,8 +2,9 @@
     Webmaster: Hans Kurppa
     Contact: hans.kurppa@outlook.com
     From: Turku, Finland
-    TechBBS: members/hans_k.4070/
+    TechBBS: Hans_K
     GitHub: hanskurppa
+    Reddit: BadBadLB
 
 /* THANKS */
     Name: Räpellys & Testaus
@@ -13,7 +14,7 @@
     Doctype: HTML5
     IDE: VSCode
     OS: Ubuntu
-    Scripting: PowerShell, JavaScript
+    Scripting: PowerShell, Python, JavaScript
     Server: Caddy
     Host: Hetzner
     CDN: Cloudflare
@@ -38,4 +39,4 @@
     kiernangifs.com
     testdomain.vip (no Cloudflare)
     jokurandomkissakesälläpötköttämässäriihimäellä.fi (IDN xn--jokurandomkissakesllptkttmssriihimell-dedcfbcgd30fc.fi)
-    räbä.fi (IDN xn--rb-viab.fi) (also raba.fi raebae.fi)
+    räbä.fi (IDN xn--rb-viab.fi) (also raba.fi raebae.fi) (some NSFW content)

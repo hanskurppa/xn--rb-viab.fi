@@ -25,6 +25,10 @@ html/tmp/**
 *gif*
 *gif*/**
 js/lazyload*
+localai
+localai/**
+html/amy
+html/amy/**
 
 ############
 # symlinks #
