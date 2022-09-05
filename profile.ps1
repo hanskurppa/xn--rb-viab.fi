@@ -174,6 +174,7 @@ function gif {
                 <a href="/webm/"><li>webm</li></a>
                 <a href="/mp4/"><li>mp4</li></a>
                 <a href="/humans.txt"><li>?</li></a>
+                <a href="https://amygifs.com/ai/"><li>AI Amy Adams</li></a>
                 $(if (-not $gifut -or -not $k18gifut) { 
                     "<a href=""https://alexgifs.com/""><li>Alexandra Daddario gifs</li></a>`n"
                     "                <a href=""https://alicegifs.com/""><li>Alice Levine gifs</li></a>`n"
