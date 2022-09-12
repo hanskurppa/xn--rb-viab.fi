@@ -170,32 +170,32 @@ function gif {
             <span></span>
             <span></span>
             <ul id="menu">
-                <a href="/gif/"><li>gif</li></a>
-                <a href="/webm/"><li>webm</li></a>
-                <a href="/mp4/"><li>mp4</li></a>
-                <a href="/humans.txt"><li>?</li></a>
-                <a href="https://amygifs.com/ai/"><li>AI Amy Adams</li></a>
-                $(if (-not $gifut -or -not $k18gifut) { 
-                    "<a href=""https://alexgifs.com/""><li>Alexandra Daddario gifs</li></a>`n"
-                    "                <a href=""https://alicegifs.com/""><li>Alice Levine gifs</li></a>`n"
-                    "                <a href=""https://alisongifs.com/""><li>Alison Brie gifs</li></a>`n"
-                    "                <a href=""https://alizeegifs.com/""><li>Alizée gifs</li></a>`n"
-                    "                <a href=""https://amygifs.com/""><li>Amy Adams gifs</li></a>`n"
-                    "                <a href=""https://behmgifs.com/""><li>BEHM gifs</li></a>`n"
-                    "                <a href=""https://blakegifs.com/""><li>Blake Lively gifs</li></a>`n"
-                    "                <a href=""https://christinagifs.com/""><li>Christina Hendricks gifs</li></a>`n"
-                    "                <a href=""https://elisabethgifs.com/""><li>Elisabeth Shue gifs</li></a>`n"
-                    "                <a href=""https://elizabethgifs.com/""><li>Elizabeth Hurley gifs</li></a>`n"
-                    "                <a href=""https://januarygifs.com/""><li>January Jones gifs</li></a>`n"
-                    "                <a href=""https://jessicagifs.com/""><li>Jessica Chastain gifs</li></a>`n"
-                    "                <a href=""https://juliegifs.com/""><li>Julie Bowen gifs</li></a>`n"
-                    "                <a href=""https://katheryngifs.com/""><li>Katheryn Winnick gifs</li></a>`n"
-                    "                <a href=""https://kiernangifs.com/""><li>Kiernan Shipka gifs</li></a>"
-                 })
+                $(if (-not $gifut -or -not $k18gifut) {
+                    "                <li><a href=""https://alexgifs.com/"">Alexandra Daddario gifs</a></li>`n"
+                    "                <li><a href=""https://alicegifs.com/"">Alice Levine gifs</a></li>`n"
+                    "                <li><a href=""https://alisongifs.com/"">Alison Brie gifs</a></li>`n"
+                    "                <li><a href=""https://alizeegifs.com/"">Alizée gifs</a></li>`n"
+                    "                <li><a href=""https://amygifs.com/"">Amy Adams gifs</a></li>`n"
+                    "                <li><a href=""https://behmgifs.com/"">BEHM gifs</a></li>`n"
+                    "                <li><a href=""https://blakegifs.com/"">Blake Lively gifs</a></li>`n"
+                    "                <li><a href=""https://christinagifs.com/"">Christina Hendricks gifs</a></li>`n"
+                    "                <li><a href=""https://elisabethgifs.com/"">Elisabeth Shue gifs</a></li>`n"
+                    "                <li><a href=""https://elizabethgifs.com/"">Elizabeth Hurley gifs</a></li>`n"
+                    "                <li><a href=""https://januarygifs.com/"">January Jones gifs</a></li>`n"
+                    "                <li><a href=""https://jessicagifs.com/"">Jessica Chastain gifs</a></li>`n"
+                    "                <li><a href=""https://juliegifs.com/"">Julie Bowen gifs</a></li>`n"
+                    "                <li><a href=""https://katheryngifs.com/"">Katheryn Winnick gifs</a></li>`n"
+                    "                <li><a href=""https://kiernangifs.com/"">Kiernan Shipka gifs</a></li>`n"
+                    "                <li><a href=""https://amygifs.com/ai/"">NSFW AI Amy Adams</a></li>"
+                })
+                <li><a href="/humans.txt">?</a></li>
             </ul>
         </div>
     </nav>
-    <input style="display:none" type="text" placeholder="$PageHeaderText" id="filter" onkeyup='filter()'>
+    <label>
+        <span style="display:none">Search:</span>
+        <input style="display:none" type="text" placeholder="$PageHeaderText" id="q" onkeyup='filter()'>
+    </label>
 </header>
 <main>
 "@
@@ -258,13 +258,12 @@ function gif {
     $res += @"
 
 <script>
-    var filterEl = document.getElementById('filter');
+    var filterEl = document.getElementById('q');
     filterEl.style.display = '';
-    //filterEl.focus({ preventScroll: true });
 
     function initFilter() {
         if (!filterEl.value) {
-            var filterParam = new URL(window.location.href).searchParams.get('filter');
+            var filterParam = new URL(window.location.href).searchParams.get('q');
             if (filterParam) {
                 filterEl.value = filterParam;
             }
@@ -290,9 +289,7 @@ function gif {
         });
     }
 
-    var lazyLoadInstance = new LazyLoad({
-        // Your custom settings go here
-    });
+    var lazyLoadInstance = new LazyLoad();
 </script>
 </body>
 </html>
