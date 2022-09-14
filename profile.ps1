@@ -103,10 +103,10 @@ function gif {
         $PageDesc       = $PageHeaderText
         
         switch ($ShortName) {
-            "alex"      { $PageVideoPath = "/var/www/gifut/mp4/abofal_bonk_2.mp4" }
+            "alex"      { $PageVideoPath = "$($Mp4Dir)/2022_porsche_ad_wink_1.mp4" }
             "alice"     { $PageVideoPath = "$($Mp4Dir)/2015_james_and_alice_comedy_neighbours_love_actually_01.mp4" }
             "alison"    { $PageVideoPath = "$($Mp4Dir)/2015_get_hard_golf_zoom_03.mp4" }
-            "alizee"    { $PageVideoPath = "/var/www/gifut/mp4/abofal_bonk_2.mp4" }
+            "alizee"    { $PageVideoPath = "$($Mp4Dir)/2000_moi_lolita_makeup.mp4" }
             "amy"       { $PageVideoPath = "$($Mp4Dir)/1999_drop_dead_gorgeous_silly.mp4" }
             "behm"      { $PageVideoPath = "$($Mp4Dir)/2020_ylex_5_sekunnin_haaste_2_zoom.mp4" }
             "blake"     { $PageVideoPath = "$($Mp4Dir)/2016_the_shallows_prep_08.mp4" }
@@ -164,38 +164,40 @@ function gif {
 <body onload="initFilter()">
 <header>
     <nav role="navigation">
-        <div id="menuToggle">
-            <input type="checkbox">
-            <span></span>
-            <span></span>
-            <span></span>
-            <ul id="menu">
-                $(if (-not $gifut -or -not $k18gifut) {
-                    "                <li><a href=""https://alexgifs.com/"">Alexandra Daddario gifs</a></li>`n"
-                    "                <li><a href=""https://alicegifs.com/"">Alice Levine gifs</a></li>`n"
-                    "                <li><a href=""https://alisongifs.com/"">Alison Brie gifs</a></li>`n"
-                    "                <li><a href=""https://alizeegifs.com/"">Alizée gifs</a></li>`n"
-                    "                <li><a href=""https://amygifs.com/"">Amy Adams gifs</a></li>`n"
-                    "                <li><a href=""https://behmgifs.com/"">BEHM gifs</a></li>`n"
-                    "                <li><a href=""https://blakegifs.com/"">Blake Lively gifs</a></li>`n"
-                    "                <li><a href=""https://christinagifs.com/"">Christina Hendricks gifs</a></li>`n"
-                    "                <li><a href=""https://elisabethgifs.com/"">Elisabeth Shue gifs</a></li>`n"
-                    "                <li><a href=""https://elizabethgifs.com/"">Elizabeth Hurley gifs</a></li>`n"
-                    "                <li><a href=""https://januarygifs.com/"">January Jones gifs</a></li>`n"
-                    "                <li><a href=""https://jessicagifs.com/"">Jessica Chastain gifs</a></li>`n"
-                    "                <li><a href=""https://juliegifs.com/"">Julie Bowen gifs</a></li>`n"
-                    "                <li><a href=""https://katheryngifs.com/"">Katheryn Winnick gifs</a></li>`n"
-                    "                <li><a href=""https://kiernangifs.com/"">Kiernan Shipka gifs</a></li>`n"
-                    "                <li><a href=""https://amygifs.com/ai/"">NSFW AI Amy Adams</a></li>"
-                })
-                <li><a href="/humans.txt">?</a></li>
-            </ul>
-        </div>
+        <input type="checkbox" aria-label="Open menu">
+        <span></span>
+        <span></span>
+    <span></span>
+        <ul id="menu">
+            $(if (-not $gifut -or -not $k18gifut) {
+                "<li><a href=""https://alexgifs.com/"">Alexandra Daddario gifs</a></li>`n"
+                "            <li><a href=""https://alicegifs.com/"">Alice Levine gifs</a></li>`n"
+                "            <li><a href=""https://alisongifs.com/"">Alison Brie gifs</a></li>`n"
+                "            <li><a href=""https://alizeegifs.com/"">Alizée gifs</a></li>`n"
+                "            <li><a href=""https://amygifs.com/"">Amy Adams gifs</a></li>`n"
+                "            <li><a href=""https://behmgifs.com/"">BEHM gifs</a></li>`n"
+                "            <li><a href=""https://blakegifs.com/"">Blake Lively gifs</a></li>`n"
+                "            <li><a href=""https://christinagifs.com/"">Christina Hendricks gifs</a></li>`n"
+                "            <li><a href=""https://elisabethgifs.com/"">Elisabeth Shue gifs</a></li>`n"
+                "            <li><a href=""https://elizabethgifs.com/"">Elizabeth Hurley gifs</a></li>`n"
+                "            <li><a href=""https://januarygifs.com/"">January Jones gifs</a></li>`n"
+                "            <li><a href=""https://jessicagifs.com/"">Jessica Chastain gifs</a></li>`n"
+                "            <li><a href=""https://juliegifs.com/"">Julie Bowen gifs</a></li>`n"
+                "            <li><a href=""https://katheryngifs.com/"">Katheryn Winnick gifs</a></li>`n"
+                "            <li><a href=""https://kiernangifs.com/"">Kiernan Shipka gifs</a></li>`n"
+                "            <li><a href=""https://amygifs.com/ai/"">NSFW AI Amy Adams</a></li>"
+            })
+            <li><a href="/humans.txt">?</a></li>
+        </ul>
     </nav>
-    <label>
-        <span style="display:none">Search:</span>
-        <input style="display:none" type="text" placeholder="$PageHeaderText" id="q" onkeyup='filter()'>
-    </label>
+    <nav role="search">
+        <input type="text" placeholder="$PageHeaderText" id="q" onkeyup='filter(event)' aria-label="Search">
+        <a href="" id="q-link" title="Direct link to search results">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+        </a>
+    </nav>
 </header>
 <main>
 "@
@@ -271,8 +273,9 @@ function gif {
         filter();
     }
 
-    function filter() {
+    function filter(e) {
         var q = filterEl.value.trim().toLowerCase();
+        document.getElementById("q-link").href = '/?q=' + encodeURIComponent(q);
         var elems = document.querySelectorAll('article');
         elems.forEach(function(el) {
             if (!q) {
@@ -287,6 +290,11 @@ function gif {
                 el.style.display = 'none';
             }
         });
+
+        // Enter key
+        if (e.keyCode == 13 || e.which == 13) {
+            window.location.href = document.getElementById("q-link").href;
+        }
     }
 
     var lazyLoadInstance = new LazyLoad();
