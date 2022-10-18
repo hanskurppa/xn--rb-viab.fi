@@ -1,11 +1,6 @@
 {
 	admin off
 	email hans.kurppa@outlook.com
-	servers {
-		protocol {
-			experimental_http3
-		}
-	}
 }
 
 #############################
