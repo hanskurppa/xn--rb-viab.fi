@@ -7,6 +7,8 @@
 *.jpeg
 *.jpg
 *.jxl
+*.locale
+*.m4a
 *.mp4
 *.pdf
 *.png

@@ -16,6 +16,7 @@
 	header *.html Cache-Control "max-age=900"
 	header *.js Cache-Control "max-age=900"
 	header *.json Cache-Control "max-age=900"
+	header *.locale Cache-Control "max-age=900"
 	header *.txt Cache-Control "max-age=900"
 	header *.zip Cache-Control "max-age=900"
 	header *.gif Cache-Control "max-age=31536000, immutable"
@@ -25,6 +26,7 @@
 	header *.mp4 Cache-Control "max-age=31536000, immutable"
 	header *.png Cache-Control "max-age=31536000, immutable"
 	header *.webm Cache-Control "max-age=31536000, immutable"
+	header *.m4a Cache-Control "max-age=31536000, immutable"
 	header *.css Content-Type "text/css"
 	header *.html Content-Type "text/html"
 	header *.js Content-Type "application/javascript"
@@ -38,6 +40,8 @@
 	header *.mp4 Content-Type "video/mp4"
 	header *.png Content-Type "image/png"
 	header *.webm Content-Type "video/webm"
+	header *.m4a Content-Type "audio/mp4"
+	header *.locale Content-Type "application/octet-stream"
 	encode gzip zstd
 	file_server
 }
@@ -87,6 +91,13 @@ xn--rb-viab.fi {
 	redir /tmp/ https://xn--rb-viab.fi/
 	redir /tmp/k18 https://xn--rb-viab.fi/
 	redir /tmp/k18/ https://xn--rb-viab.fi/
+	import cloudflare
+	import server
+}
+
+# mommygf.mom
+mommygf.mom {
+	root * /var/www/mommygf
 	import cloudflare
 	import server
 }
@@ -265,6 +276,10 @@ raebae.fi {
 
 www.xn--jokurandomkissakesllptkttmssriihimell-dedcfbcgd30fc.fi {
 	redir https://xn--jokurandomkissakesllptkttmssriihimell-dedcfbcgd30fc.fi{uri} permanent
+}
+
+www.mommygf.mom {
+	redir https://mommygf.mom{uri} permanent
 }
 
 www.gifut.fi {
