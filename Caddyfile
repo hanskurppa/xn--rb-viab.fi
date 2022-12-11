@@ -102,6 +102,13 @@ mommygf.mom {
 	import server
 }
 
+# datakeskus.io
+datakeskus.io {
+	root * /var/www/datakeskus
+	import cloudflare
+	import server
+}
+
 # gifut.fi
 gifut.fi {
 	root * /var/www/gifut
@@ -280,6 +287,10 @@ www.xn--jokurandomkissakesllptkttmssriihimell-dedcfbcgd30fc.fi {
 
 www.mommygf.mom {
 	redir https://mommygf.mom{uri} permanent
+}
+
+www.datakeskus.io {
+	redir https://datakeskus.io{uri} permanent
 }
 
 www.gifut.fi {
