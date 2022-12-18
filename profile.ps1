@@ -33,6 +33,8 @@ function gif {
         [Switch]$Katheryn,
         [Alias("Shipka")]
         [Switch]$Kiernan,
+        [Alias("Cook")]
+        [Switch]$Rachel,
         [Switch]$gifut,
         [Switch]$k18gifut,
         [Switch]$Force
@@ -54,6 +56,7 @@ function gif {
         "Julie"     { "julie",      "Julie Bowen" }
         "Katheryn"  { "katheryn",   "Katheryn Winnick" }
         "Kiernan"   { "kiernan",    "Kiernan Shipka" }
+        "Rachel"    { "rachel",     "Rachel Cook" }
     }
 
     if ($gifut) {
@@ -185,7 +188,7 @@ function gif {
                 "            <li><a href=""https://juliegifs.com/"">Julie Bowen gifs</a></li>`n"
                 "            <li><a href=""https://katheryngifs.com/"">Katheryn Winnick gifs</a></li>`n"
                 "            <li><a href=""https://kiernangifs.com/"">Kiernan Shipka gifs</a></li>`n"
-                "            <li><a href=""https://amygifs.com/ai/"">NSFW AI Amy Adams</a></li>"
+                "            <li><a href=""https://rachelgifs.com/"">Rachel Cook gifs</a></li>"
             })
             <li><a href="/humans.txt">?</a></li>
         </ul>

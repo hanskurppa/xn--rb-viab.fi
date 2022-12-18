@@ -245,6 +245,14 @@ kiernangifs.com {
 	import gifgallery
 }
 
+# Rachel Cook
+rachelgifs.com {
+	root * /var/www/rachelgifs
+	import cloudflare
+	import server
+	import gifgallery
+}
+
 # jokurandomkissakesälläpötköttämässäriihimäellä.fi
 xn--jokurandomkissakesllptkttmssriihimell-dedcfbcgd30fc.fi {
 	root * /var/www/jokurandom
@@ -359,4 +367,8 @@ www.jessicagifs.com {
 
 www.katheryngifs.com {
 	redir https://katheryngifs.com{uri} permanent
+}
+
+www.rachelgifs.com {
+	redir https://rachelgifs.com{uri} permanent
 }
