@@ -81,6 +81,9 @@ testdomain.vip {
 		protocols tls1.3
 		alpn h2
 	}
+	templates /ip
+	header /ip Content-Type text/plain
+	respond /ip "{{.RemoteIP}}"
 	import server
 }
 
@@ -89,8 +92,8 @@ xn--rb-viab.fi {
 	root * /var/www/html
 	redir /tmp https://xn--rb-viab.fi/
 	redir /tmp/ https://xn--rb-viab.fi/
-	redir /tmp/k18 https://xn--rb-viab.fi/
-	redir /tmp/k18/ https://xn--rb-viab.fi/
+	redir /tmpk18 https://xn--rb-viab.fi/
+	redir /tmpk18/ https://xn--rb-viab.fi/
 	import cloudflare
 	import server
 }
