@@ -21,6 +21,12 @@
 ########################################
 html/tmp
 html/tmp/**
+html/tmpk18
+html/tmpk18/**
+html_sigal/destination_tmpk18
+html_sigal/destination_tmpk18/**
+html_sigal/source_tmpk18
+html_sigal/source_tmpk18/**
 
 ######################
 # Luodaan skriptillä #
