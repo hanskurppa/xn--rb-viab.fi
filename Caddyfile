@@ -92,8 +92,6 @@ xn--rb-viab.fi {
 	root * /var/www/html
 	redir /tmp https://xn--rb-viab.fi/
 	redir /tmp/ https://xn--rb-viab.fi/
-	redir /tmpk18 https://xn--rb-viab.fi/
-	redir /tmpk18/ https://xn--rb-viab.fi/
 	import cloudflare
 	import server
 }
