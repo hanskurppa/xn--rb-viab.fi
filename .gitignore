@@ -31,6 +31,8 @@ html_sigal/source_tmpk18
 html_sigal/source_tmpk18/**
 html_sigal/source_tmp
 html_sigal/source_tmp/**
+html_sigal/sigal
+html_sigal/sigal/**
 html_sigal/sigal-justlight
 html_sigal/sigal-justlight/**
 
@@ -40,12 +42,6 @@ html_sigal/sigal-justlight/**
 *gif*
 *gif*/**
 js/lazyload*
-ai
-ai/**
-html/amy
-html/amy/**
-k18gallery
-k18gallery/**
 
 ############
 # symlinks #
