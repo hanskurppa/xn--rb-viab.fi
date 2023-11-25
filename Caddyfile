@@ -38,6 +38,7 @@
 	header *.jpeg Content-Type "image/jpeg"
 	header *.jpg Content-Type "image/jpeg"
 	header *.mp4 Content-Type "video/mp4"
+	header *.m4v Content-Type "video/x-m4v"
 	header *.png Content-Type "image/png"
 	header *.webm Content-Type "video/webm"
 	header *.m4a Content-Type "audio/mp4"
