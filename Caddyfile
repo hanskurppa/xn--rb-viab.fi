@@ -3,10 +3,11 @@
 	email hans.kurppa@outlook.com
 }
 
-#############################
-# Kaikkien sivujen käytössä #
-#############################
 (server) {
+	tls {
+		protocols tls1.3
+		alpn h2
+	}
 	handle_errors {
 		respond "{http.error.status_code} {http.error.status_text}"
 	}
@@ -47,20 +48,6 @@
 	file_server
 }
 
-###############################
-# Cloudflare sivujen käytössä #
-###############################
-(cloudflare) {
-	tls {
-		protocols tls1.3
-		alpn h2
-		dns cloudflare {env.CF_API_TOKEN}
-	}
-}
-
-##################################
-# Vain GIF-gallerioiden käytössä #
-##################################
 (gifgallery) {
 	redir /gif /gif/
 	redir /jpg /jpg/
@@ -72,16 +59,8 @@
 	file_server /webm/* browse
 }
 
-####################
-# Aktiiviset sivut #
-####################
-# Cloudflare ei ole käytössä
 testdomain.vip {
 	root * /var/www/testdomain
-	tls {
-		protocols tls1.3
-		alpn h2
-	}
 	templates /ip
 	header /ip Content-Type text/plain
 	respond /ip "{{.RemoteIP}}"
@@ -93,28 +72,24 @@ xn--rb-viab.fi {
 	root * /var/www/html
 	redir /tmp https://xn--rb-viab.fi/
 	redir /tmp/ https://xn--rb-viab.fi/
-	import cloudflare
 	import server
 }
 
 # mommygf.mom
 mommygf.mom {
 	root * /var/www/mommygf
-	import cloudflare
 	import server
 }
 
 # datakeskus.io
 datakeskus.io {
 	root * /var/www/datakeskus
-	import cloudflare
 	import server
 }
 
 # gifut.fi
 gifut.fi {
 	root * /var/www/gifut
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -122,7 +97,6 @@ gifut.fi {
 # k18gifut.fi
 k18gifut.fi {
 	root * /var/www/k18gifut
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -130,7 +104,6 @@ k18gifut.fi {
 # Alexandra Daddario
 alexgifs.com {
 	root * /var/www/alexgifs
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -138,7 +111,6 @@ alexgifs.com {
 # Alice Levine
 alicegifs.com {
 	root * /var/www/alicegifs
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -146,7 +118,6 @@ alicegifs.com {
 # Alison Brie
 alisongifs.com {
 	root * /var/www/alisongifs
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -154,7 +125,6 @@ alisongifs.com {
 # Alizée
 alizeegifs.com {
 	root * /var/www/alizeegifs
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -162,7 +132,6 @@ alizeegifs.com {
 # Amy Adams
 amygifs.com {
 	root * /var/www/amygifs
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -170,7 +139,6 @@ amygifs.com {
 # BEHM
 behmgifs.com {
 	root * /var/www/behmgifs
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -178,7 +146,6 @@ behmgifs.com {
 # Blake Lively
 blakegifs.com {
 	root * /var/www/blakegifs
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -186,7 +153,6 @@ blakegifs.com {
 # Christina Hendricks
 christinagifs.com {
 	root * /var/www/christinagifs
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -194,7 +160,6 @@ christinagifs.com {
 # Elisabeth Shue
 elisabethgifs.com {
 	root * /var/www/elisabethgifs
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -202,7 +167,6 @@ elisabethgifs.com {
 # Elizabeth Hurley
 elizabethgifs.com {
 	root * /var/www/elizabethgifs
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -210,7 +174,6 @@ elizabethgifs.com {
 # January Jones
 januarygifs.com {
 	root * /var/www/januarygifs
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -218,7 +181,6 @@ januarygifs.com {
 # Jessica Chastain
 jessicagifs.com {
 	root * /var/www/jessicagifs
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -226,7 +188,6 @@ jessicagifs.com {
 # Julie Bowen
 juliegifs.com {
 	root * /var/www/juliegifs
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -234,7 +195,6 @@ juliegifs.com {
 # Katheryn Winnick
 katheryngifs.com {
 	root * /var/www/katheryngifs
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -242,7 +202,6 @@ katheryngifs.com {
 # Kiernan Shipka
 kiernangifs.com {
 	root * /var/www/kiernangifs
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -250,7 +209,6 @@ kiernangifs.com {
 # Rachel Cook
 rachelgifs.com {
 	root * /var/www/rachelgifs
-	import cloudflare
 	import server
 	import gifgallery
 }
@@ -260,117 +218,13 @@ xn--jokurandomkissakesllptkttmssriihimell-dedcfbcgd30fc.fi {
 	root * /var/www/jokurandom
 	try_files {path} /sghdsgdfh.jpg
 	header / Content-Disposition "filename=sghdsgdfh.jpg"
-	import cloudflare
 	import server
 }
 
-#############################
-# Pysyvät edelleenohjaukset #
-#############################
-www.testdomain.vip {
-	redir https://testdomain.vip{uri} permanent
-}
-
-www.xn--rb-viab.fi {
+www.raba.fi, raba.fi, www.raebae.fi, raebae.fi, www.xn--rb-viab.fi {
 	redir https://xn--rb-viab.fi{uri} permanent
 }
 
-www.raba.fi {
-	redir https://xn--rb-viab.fi{uri} permanent
-}
-
-raba.fi {
-	redir https://xn--rb-viab.fi{uri} permanent
-}
-
-www.raebae.fi {
-	redir https://xn--rb-viab.fi{uri} permanent
-}
-
-raebae.fi {
-	redir https://xn--rb-viab.fi{uri} permanent
-}
-
-www.xn--jokurandomkissakesllptkttmssriihimell-dedcfbcgd30fc.fi {
-	redir https://xn--jokurandomkissakesllptkttmssriihimell-dedcfbcgd30fc.fi{uri} permanent
-}
-
-www.mommygf.mom {
-	redir https://mommygf.mom{uri} permanent
-}
-
-www.datakeskus.io {
-	redir https://datakeskus.io{uri} permanent
-}
-
-www.gifut.fi {
-	redir https://gifut.fi{uri} permanent
-}
-
-www.k18gifut.fi {
-	redir https://k18gifut.fi{uri} permanent
-}
-
-www.amygifs.com {
-	redir https://amygifs.com{uri} permanent
-}
-
-www.januarygifs.com {
-	redir https://januarygifs.com{uri} permanent
-}
-
-www.behmgifs.com {
-	redir https://behmgifs.com{uri} permanent
-}
-
-www.juliegifs.com {
-	redir https://juliegifs.com{uri} permanent
-}
-
-www.alexgifs.com {
-	redir https://alexgifs.com{uri} permanent
-}
-
-www.alicegifs.com {
-	redir https://alicegifs.com{uri} permanent
-}
-
-www.alizeegifs.com {
-	redir https://alizeegifs.com{uri} permanent
-}
-
-www.blakegifs.com {
-	redir https://blakegifs.com{uri} permanent
-}
-
-www.christinagifs.com {
-	redir https://christinagifs.com{uri} permanent
-}
-
-www.elisabethgifs.com {
-	redir https://elisabethgifs.com{uri} permanent
-}
-
-www.elizabethgifs.com {
-	redir https://elizabethgifs.com{uri} permanent
-}
-
-www.kiernangifs.com {
-	redir https://kiernangifs.com{uri} permanent
-}
-
-www.alisongifs.com {
-	redir https://alisongifs.com{uri} permanent
-}
-
-www.jessicagifs.com {
-	redir https://jessicagifs.com{uri} permanent
-}
-
-www.katheryngifs.com {
-	redir https://katheryngifs.com{uri} permanent
-}
-
-www.rachelgifs.com {
-	redir https://rachelgifs.com{uri} permanent
+www.testdomain.vip, www.mommygf.mom, www.datakeskus.io, www.gifut.fi, www.k18gifut.fi, www.amygifs.com, www.januarygifs.com, www.behmgifs.com, www.juliegifs.com, www.alexgifs.com, www.alicegifs.com, www.alizeegifs.com, www.blakegifs.com, www.christinagifs.com, www.elisabethgifs.com, www.elizabethgifs.com, www.kiernangifs.com, www.alisongifs.com, www.jessicagifs.com, www.katheryngifs.com, www.rachelgifs.com, www.xn--jokurandomkissakesllptkttmssriihimell-dedcfbcgd30fc.fi {
+	redir https://{labels.1}.{labels.0}{uri} permanent
 }

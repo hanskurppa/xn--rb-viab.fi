@@ -1,14 +1,12 @@
 # räbä.fi konffit
 
-Palvelimena Hetzner CPX21.  
-3 vCPU, 4 GB RAM, 80 GB levy, Ubuntu, plus snapshot backup. 10 € / kk.
+Palvelimena Hetzner dedikoitu.  
+Intel Core i7-7700, 64 GB RAM, 1 TB NVMe SSD RAID 0, Arch Linux, Storage Box backup. 38 € / kk.
 
-Web-palvelimena Caddy, staattiset sivut ja Cloudflare CDN.  
-GIF-galleriat generoidaan PowerShell-skriptillä.
+Web-palvelimena Caddy ja staattiset sivut.  
 
 FI-domainit Domainkeskuksesta 9 € / v.  
 COM-domainit Cloudflaresta 8 € / v.  
 VIP-domainit Namecheapista 8 € / v.
 
-Räpellyksiin käytössä Adobe Creative Cloud kaikilla mausteilla 37 € / kk.  
-Jos maksat nyt ylihintaa tästä, mene peruuttamaan tilausta ja Adobe luultavasti tarjoaa parempaa only-for-you hintaa samantien.
+Räpellyksiin käytössä Affinity Photo 2, DaVinci Resolve ja Luminar Neo.

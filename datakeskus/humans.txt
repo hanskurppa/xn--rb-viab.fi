@@ -1,1 +1,1 @@
-/var/www/humans.txt
+humans.txt

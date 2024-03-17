@@ -130,7 +130,7 @@ thumb_video_delay = '5'
 # orig_dir = 'original'
 
 # Use symbolic links instead of copying the original images
-# orig_link = False
+orig_link = True
 
 # Use symbolic links that are relative to the source directory instead of
 # absolute paths

@@ -7,7 +7,6 @@
 *.jpeg
 *.jpg
 *.jxl
-*.locale
 *.m4a
 *.mp4
 *.pdf
@@ -41,10 +40,4 @@ html_sigal/sigal-justlight/**
 ######################
 *gif*
 *gif*/**
-js/lazyload*
-
-############
-# symlinks #
-############
-_symlinks
-_symlinks/**
+lazyload*
