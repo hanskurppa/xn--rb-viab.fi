@@ -70,31 +70,25 @@ testdomain.vip {
 # räbä.fi
 xn--rb-viab.fi {
 	root * /var/www/html
-	redir /tmp https://xn--rb-viab.fi/
-	redir /tmp/ https://xn--rb-viab.fi/
 	import server
 }
 
-# mommygf.mom
 mommygf.mom {
 	root * /var/www/mommygf
 	import server
 }
 
-# datakeskus.io
 datakeskus.io {
 	root * /var/www/datakeskus
 	import server
 }
 
-# gifut.fi
 gifut.fi {
 	root * /var/www/gifut
 	import server
 	import gifgallery
 }
 
-# k18gifut.fi
 k18gifut.fi {
 	root * /var/www/k18gifut
 	import server

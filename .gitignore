@@ -22,18 +22,16 @@ html/tmp
 html/tmp/**
 html/tmpk18
 html/tmpk18/**
-html_sigal/destination_tmp
-html_sigal/destination_tmp/**
-html_sigal/destination_tmpk18
-html_sigal/destination_tmpk18/**
-html_sigal/source_tmpk18
-html_sigal/source_tmpk18/**
-html_sigal/source_tmp
-html_sigal/source_tmp/**
-html_sigal/sigal
-html_sigal/sigal/**
-html_sigal/sigal-justlight
-html_sigal/sigal-justlight/**
+sigal/destination_tmp
+sigal/destination_tmp/**
+sigal/destination_tmpk18
+sigal/destination_tmpk18/**
+sigal/source_tmp
+sigal/source_tmp/**
+sigal/source_tmpk18
+sigal/source_tmpk18/**
+sigal/sigal-justlight
+sigal/sigal-justlight/**
 
 ######################
 # Luodaan skriptillä #

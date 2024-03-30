@@ -1,1 +1,1 @@
-robots.txt
+/var/www/robots.txt

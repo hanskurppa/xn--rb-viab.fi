@@ -13,11 +13,10 @@
     Language: Finnish, English
     Doctype: HTML5
     IDE: VSCode
-    OS: Ubuntu
-    Scripting: PowerShell, Python, JavaScript
+    OS: Arch Linux
+    Scripting: Python
     Server: Caddy
     Host: Hetzner
-    CDN: Cloudflare
 
 /* DOMAINS */
     alexgifs.com
