@@ -1,7 +1,9 @@
 # Palvelin
 
+| testdomain.vip | 95.216.98.172 | 2a01:4f9:2b:11d9::2 |
+
 Palvelimena Hetzner dedikoitu.  
-Intel Core i7-7700, 64 GB RAM, 1 TB NVMe SSD RAID 0, Arch Linux, Storage Box backup. 38 € / kk.
+Intel Core i7-7700, 64 GB RAM, 1 TB NVMe SSD RAID 0, Arch Linux. 38 € / kk.
 
 Web-palvelimena Caddy ja staattiset sivut.  
 
@@ -9,12 +11,13 @@ FI-domainit Domainkeskuksesta 9 € / v
 COM-domainit Cloudflaresta 8 € / v  
 Muut domainit Namecheapista 8 € / v
 
-Räpellyksiin käytössä Affinity Photo 2 ja DaVinci Resolve.
+Affinity Photo 2 ja DaVinci Resolve.
 
 # Palomuurisäännöt
 
 Ei paikallista muuria, vain Hetzner Robot Firewall.  
-Kaikki outbound sallittu.
+Kaikki outbound sallittu.  
+[Kovennettu SSH](https://github.com/hanskurppa/xn--rb-viab.fi/blob/master/etc/sshd/sshd_config).
 
 | #  | Name | Version | Protocol | Source IP | Destination IP | Source port | Destination port | TCP flags | Action |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
