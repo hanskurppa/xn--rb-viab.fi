@@ -1,6 +1,8 @@
 # Palvelin
 
-| testdomain.vip | 95.216.98.172 | 2a01:4f9:2b:11d9::2 |
+    testdomain.vip
+    95.216.98.172
+    2a01:4f9:2b:11d9::2
 
 Palvelimena Hetzner dedikoitu.  
 Intel Core i7-7700, 64 GB RAM, 1 TB NVMe SSD RAID 0, Arch Linux. 38 € / kk.
