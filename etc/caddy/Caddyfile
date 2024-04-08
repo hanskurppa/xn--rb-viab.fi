@@ -83,6 +83,11 @@ datakeskus.io {
 	import server
 }
 
+jimmz.fi {
+	root * /var/www/jimmz
+	import server
+}
+
 gifut.fi {
 	root * /var/www/gifut
 	import server
@@ -219,6 +224,6 @@ www.raba.fi, raba.fi, www.raebae.fi, raebae.fi, www.xn--rb-viab.fi {
 	redir https://xn--rb-viab.fi{uri} permanent
 }
 
-www.testdomain.vip, www.mommygf.mom, www.datakeskus.io, www.gifut.fi, www.k18gifut.fi, www.amygifs.com, www.januarygifs.com, www.behmgifs.com, www.juliegifs.com, www.alexgifs.com, www.alicegifs.com, www.alizeegifs.com, www.blakegifs.com, www.christinagifs.com, www.elisabethgifs.com, www.elizabethgifs.com, www.kiernangifs.com, www.alisongifs.com, www.jessicagifs.com, www.katheryngifs.com, www.rachelgifs.com, www.xn--jokurandomkissakesllptkttmssriihimell-dedcfbcgd30fc.fi {
+www.testdomain.vip, www.mommygf.mom, www.datakeskus.io, www.gifut.fi, www.k18gifut.fi, www.amygifs.com, www.januarygifs.com, www.behmgifs.com, www.juliegifs.com, www.alexgifs.com, www.alicegifs.com, www.alizeegifs.com, www.blakegifs.com, www.christinagifs.com, www.elisabethgifs.com, www.elizabethgifs.com, www.kiernangifs.com, www.alisongifs.com, www.jessicagifs.com, www.katheryngifs.com, www.rachelgifs.com, www.xn--jokurandomkissakesllptkttmssriihimell-dedcfbcgd30fc.fi, www.jimmz.fi {
 	redir https://{labels.1}.{labels.0}{uri} permanent
 }
