@@ -13,7 +13,7 @@ FI-domainit Domainkeskuksesta 9 € / v
 COM-domainit Cloudflaresta 8 € / v  
 Muut domainit Namecheapista 8 € / v
 
-Affinity Photo 2 ja DaVinci Resolve.
+Photoshop ja DaVinci Resolve.
 
 # Palomuurisäännöt
 
